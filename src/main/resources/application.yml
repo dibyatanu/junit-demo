@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/employee-db
+    username: postgres
+    password: postgres
+
+  jpa :
+    properties:
+      hibernate:
+        show_sql : true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto : create-drop
