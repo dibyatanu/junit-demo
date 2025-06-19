@@ -1,11 +1,13 @@
 package uk.version1.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import uk.version1.model.Employee;
 import uk.version1.repository.EmployeeRepository;
 
 
+import java.util.Collections;
 import java.util.List;
 @Service
 @AllArgsConstructor
@@ -17,7 +19,6 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findAll() ;
     }
-
 }

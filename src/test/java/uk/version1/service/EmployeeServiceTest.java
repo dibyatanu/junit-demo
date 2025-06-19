@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import uk.version1.model.Employee;
 import uk.version1.repository.EmployeeRepository;
+import uk.version1.tags.FastTest;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -21,6 +22,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @Tag("Unit Test")
+@FastTest
 public class EmployeeServiceTest {
     @Mock
     private EmployeeRepository employeeRepository;
