@@ -21,6 +21,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import uk.version1.model.Employee;
 import uk.version1.service.EmployeeService;
+import uk.version1.tags.FastTest;
 
 
 import java.time.LocalDateTime;
@@ -41,6 +42,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes = EmployeeApi.class )
 @WebAppConfiguration
 @Tag("Unit Test")
+@FastTest
 public class EmployeeApiTest {
     @MockitoBean
     private EmployeeService employeeService;
@@ -63,7 +65,7 @@ public class EmployeeApiTest {
            mockMvc.perform(post("/add")
                    .contentType(MediaType.APPLICATION_JSON)
                    .content(objectMapper.writeValueAsString(emp)))
-                   .andExpect(status().isOk());
+                   .andExpect(status().isCreated());
             //assert
             verify(employeeService).addEmployee(employeeArgumentCaptor.capture());
             assertThat(employeeArgumentCaptor.getValue())
