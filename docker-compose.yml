@@ -4,9 +4,29 @@ services:
     image: postgres:latest
     restart: always
     container_name: employee-db
+    networks:
+      - host
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_DB=employee-db
     ports:
       - "5432:5432"
+
+  service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: junit-demo
+    networks:
+      - host
+    environment:
+      - DB_SERVER=employee-db
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+
+
+networks:
+    host:
